@@ -13,13 +13,6 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.secret_key = "key_secret"
 api = Api(app)
 
-@app.route('/')
-def home():
-    listItem = ListItem()
-    items = listItem.get()
-    print(items)
-    return render_template('index.html', items = items)
-
 jwt = JWT(app, authenticated, identity)
 
 api.add_resource(Item, '/item/<string:name>')
